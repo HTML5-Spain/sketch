@@ -1,0 +1,92 @@
+<head>
+  <title>Leaderboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="header">
+    <div class="containerFlex">
+     <section class="flex-item-logo">
+       <img src="/logo.png" class="logo">
+     </section>
+     <section class="flex-item-title">
+        <h2>HTML5 Stati</h2>
+     </section>
+     <section class="flex-item-auth">
+      {{#if isLogged }}
+        <img src="{{ avatar }}" class="avatar" alt="You">
+      {{/if}}
+      {{> loginButtons}} 
+     </section>
+     
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    {{> sAlert}}
+    {{#if isLogged }}
+      {{#if hasNotVoted }}
+        {{> leaderboard}}       
+      {{/if}}
+      
+    {{else}}
+      {{> landing }}
+    {{/if}}
+  </div>
+  
+</body>
+
+<template name="navbar">
+  {{# if isAdmin }}
+    <section class="admin">
+      {{#if notImportedYet}}
+        <input type="file" id="csv-file" name="files"/>
+        <button type="submit" id="import" class="btn-small">Import Talks</button>
+      {{/if}}
+    </section>
+  {{/if}}     
+</template>
+<template name="ControlPanel">
+  <div class="containerFlex">
+    <div class="controlButtons">
+      {{> affinityFilter }}
+      {{> byTagFilter }}
+    </div>
+    <div class="controlVote">
+      <span><i class="vote fa fa-thumbs-o-up fa-5x"></i></span>
+    </div>
+  </div>
+  
+</template>
+<template name="leaderboard">
+   {{#if isLogged }}
+    {{> navbar}}
+    {{> ControlPanel }}
+    {{> reactiveTable class="table table-bordered table-hover" settings=settings }}  
+   {{/if}}
+</template>
+
+<template name="thumbsUp">
+    <input class="vote increment" type="number" min="0" max="10" data-talk="{{ talkId }}">
+</template>
+<template name="notRelated">
+  <span><i class="notRelated fa fa-times-circle fa-3x"></i></span>
+</template>
+
+<template name="affinityFilter">
+    <button class="btn btn-primary btn-sm clickable" id="btnAffinity">{{ title }} {{ results }}</button>
+</template>
+<template name="byTagFilter">
+    <div class="containerFlex spaced">
+       {{# each tags }}
+          <div class="flex-item">
+            <button class="tag  btn btn-primary btn-sm byTag" data-current="{{ this }}">{{ this }}</button>
+          </div>
+      {{/each}}
+    </div>
+   
+</template>
+<template name="landing">
+  <h1>esta es la landing</h1> 
+  
+</template>
