@@ -6,15 +6,11 @@
 
 meteor-platform
 less
-amplify
 accounts-ui
 accounts-meetup
 alanning:roles
 service-configuration
-evaisse:csv
-aslagle:reactive-table
 fortawesome:fontawesome
-twbs:bootstrap
 juliancwirko:s-alert
 juliancwirko:s-alert-jelly
 reactive-var
