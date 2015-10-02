@@ -14,7 +14,6 @@ Accounts.onCreateUser(function(options, user){
     throw error;
   }
 
-  debugger;
   var profile = 
     result.data.results
       .filter(function (prof) { 

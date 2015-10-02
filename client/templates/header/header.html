@@ -1,0 +1,21 @@
+<template name="header">
+  
+  <div class="ui stackable container menu">
+  <div class="item">
+    <img src="/logo.png" class="ui fluid image tiny">
+  </div>
+  <a class="item">Features</a>
+  <a class="item">Testimonials</a>
+  <a class="item right">
+    {{#if isLogged}}
+      {{> LoggedDropdown}}
+      
+    {{else}}
+      {{> loginButtons }}
+    {{/if}}
+  </a>
+</div>
+
+</template>
+
+
